@@ -1,0 +1,14 @@
+com/wavemaker/controller/AuthorDetailsController.class
+com/wavemaker/dao/BooksDao.class
+com/wavemaker/service/BooksService.class
+com/wavemaker/service/UserService.class
+com/wavemaker/controller/BooksController.class
+com/wavemaker/dao/AuthorDao.class
+com/wavemaker/controller/UserController.class
+com/wavemaker/service/AuthorService.class
+com/wavemaker/security/UserDetailsServiceImpl.class
+com/wavemaker/model/User.class
+com/wavemaker/dao/UserDao.class
+com/wavemaker/security/CustomBasicAuthenticationFilter.class
+com/wavemaker/model/Books.class
+com/wavemaker/model/AuthorDetails.class
