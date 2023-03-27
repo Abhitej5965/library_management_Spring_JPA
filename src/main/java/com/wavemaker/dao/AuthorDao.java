@@ -1,20 +1,19 @@
 package com.wavemaker.dao;
 
 import com.wavemaker.model.AuthorDetails;
-import com.wavemaker.model.Book;
 
 import java.util.List;
 
 public interface AuthorDao {
-    String addAuthor(AuthorDetails authorDetails);
+    AuthorDetails saveAndFlush(AuthorDetails authorDetails);
 
-    String deleteAuthorById(int authorId);
+    void deleteById(int authorId);
 
-    String updateAuthor(AuthorDetails authorDetails);
+    //Update
+    AuthorDetails save(AuthorDetails authorDetails);
 
-    List<AuthorDetails> getAllAuthors();
+    List<AuthorDetails> findAll();
 
-    AuthorDetails getAuthorById(int authorId);
+    AuthorDetails getById(int authorId);
 
-    List<Book> getBooksByAuthorId(int authorDetails);
 }

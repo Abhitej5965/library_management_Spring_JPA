@@ -12,7 +12,6 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
@@ -24,12 +23,12 @@ public class UserController {
     }
 
     @PostMapping
-    public String userRegister(@RequestBody User user) {
+    public User userRegister(@RequestBody User user) {
         return userService.userRegister(user);
     }
 
     @PostMapping("/{userId}/books/{bookId}")
-    public String addBooksToUser(@PathVariable(value = "bookId") int bookId, @PathVariable(value = "userId") int userId) {
-        return userService.addBooksToUsers(bookId, userId);
+    public String addBooksToUser(@PathVariable(value = "userId") int userId, @PathVariable(value = "bookId") int bookId) {
+        return userService.addBooksToUsers(userId, bookId);
     }
 }

@@ -1,6 +1,6 @@
 package com.wavemaker.security;
 
-import com.wavemaker.dao.UserDao;
+import com.wavemaker.dao_jpa.UserDao;
 import com.wavemaker.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,7 +18,7 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

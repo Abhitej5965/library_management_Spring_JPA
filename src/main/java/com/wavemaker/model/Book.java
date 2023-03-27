@@ -1,9 +1,12 @@
 package com.wavemaker.model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "BOOKS")
+@Proxy(lazy=false)
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

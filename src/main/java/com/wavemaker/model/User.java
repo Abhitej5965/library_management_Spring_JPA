@@ -1,6 +1,7 @@
 package com.wavemaker.model;
 
 import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -8,6 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "USER")
+@Proxy(lazy=false)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

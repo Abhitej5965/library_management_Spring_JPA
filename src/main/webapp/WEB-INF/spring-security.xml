@@ -16,10 +16,6 @@
     <authentication-manager alias="authenticationManager">
         <authentication-provider ref="daoAuthenticationProvider"/>
     </authentication-manager>
-    <beans:bean id="basicAuthenticationFilter" class="com.wavemaker.security.CustomBasicAuthenticationFilter">
-        <beans:constructor-arg ref="authenticationManager"/>
-        <beans:constructor-arg ref="basicAuthenticationEntryPoint"/>
-    </beans:bean>
 
     <beans:bean id="basicAuthenticationEntryPoint" class="org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint">
         <beans:property name="realmName" value="My Application Realm"/>

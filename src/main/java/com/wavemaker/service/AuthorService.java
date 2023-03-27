@@ -1,10 +1,12 @@
 package com.wavemaker.service;
 
-import com.wavemaker.dao.AuthorDao;
+import com.wavemaker.dao_jpa.AuthorDao;
+import com.wavemaker.dao_jpa.BookDao;
 import com.wavemaker.model.AuthorDetails;
 import com.wavemaker.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,27 +15,42 @@ public class AuthorService {
     @Autowired
     private AuthorDao authorDao;
 
-    public void addAuthorDetails(AuthorDetails authorDetails) {
-        authorDao.addAuthor(authorDetails);
+    @Autowired
+    private BookDao bookDao;
+
+    @Transactional
+    public AuthorDetails createAuthor(AuthorDetails authorDetails) {
+        return authorDao.saveAndFlush(authorDetails);
     }
 
-    public void deleteAuthorDetails(int authorId) {
-        authorDao.deleteAuthorById(authorId);
+    @Transactional
+    public void deleteByAuthorId(int authorId) {
+        List<Book> bookList = bookDao.getBooksByAuthorId(authorId);
+        if (!bookList.isEmpty()) {
+            for (Book book : bookList) {
+                book.setAuthorDetails(null);
+            }
+        }
+        authorDao.deleteById(authorId);
     }
 
-    public void updateAuthorDetails(AuthorDetails authorDetails) {
-        authorDao.updateAuthor(authorDetails);
+    @Transactional
+    public AuthorDetails updateAuthorDetails(AuthorDetails authorDetails) {
+        AuthorDetails newAuthorDetails = getAuthorById(authorDetails.getAuthorId());
+        newAuthorDetails.setAuthorName(authorDetails.getAuthorName());
+        newAuthorDetails.setAuthorEmail(authorDetails.getAuthorEmail());
+        newAuthorDetails.setAuthorPhoneNo(authorDetails.getAuthorPhoneNo());
+        newAuthorDetails.setAuthorAddress(authorDetails.getAuthorAddress());
+        return authorDao.save(authorDetails);
     }
 
-    public List<AuthorDetails> getAllAuthorsDetails() {
-        return authorDao.getAllAuthors();
+    @Transactional
+    public List<AuthorDetails> getAllAuthors() {
+        return authorDao.findAll();
     }
 
-    public AuthorDetails getAuthorDetailsById(int authorId) {
-        return authorDao.getAuthorById(authorId);
-    }
-
-    public List<Book> getBooksByAuthorId(int authorId) {
-        return authorDao.getBooksByAuthorId(authorId);
+    @Transactional
+    public AuthorDetails getAuthorById(int authorId) {
+        return authorDao.getById(authorId);
     }
 }

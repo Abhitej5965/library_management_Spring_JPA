@@ -5,13 +5,13 @@ import com.wavemaker.model.User;
 import java.util.List;
 
 public interface UserDao {
-    String userRegister(User user);
+    User saveAndFlush(User user);
 
     User validateUser(String username);
 
-    List<User> getAllUsers();
+    List<User> findAll();
 
-    User getUserById(int userId);
+    User getById(int userId);
 
-    String addBooksToUsers(int bookId, int userId);
+    void save(User user);
 }

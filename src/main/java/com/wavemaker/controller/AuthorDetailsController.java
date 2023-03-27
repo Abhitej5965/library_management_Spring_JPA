@@ -15,17 +15,17 @@ public class AuthorDetailsController {
 
     @GetMapping
     public List<AuthorDetails> getAllAuthors() {
-        return authorService.getAllAuthorsDetails();
+        return authorService.getAllAuthors();
     }
 
     @GetMapping("/{authorId}")
     public AuthorDetails getAuthorById(@PathVariable(value = "authorId") int authorId) {
-        return authorService.getAuthorDetailsById(authorId);
+        return authorService.getAuthorById(authorId);
     }
 
     @PostMapping
     public void addAuthorDetails(@RequestBody AuthorDetails authorDetails) {
-        authorService.addAuthorDetails(authorDetails);
+        authorService.createAuthor(authorDetails);
     }
 
     @PatchMapping
@@ -35,7 +35,7 @@ public class AuthorDetailsController {
 
     @DeleteMapping("/{authorId}")
     public String deleteAuthor(@PathVariable(value = "authorId") int authorId) {
-        authorService.deleteAuthorDetails(authorId);
+        authorService.deleteByAuthorId(authorId);
         return "book deleted successfully";
     }
 }
