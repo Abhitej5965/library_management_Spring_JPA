@@ -1,6 +1,6 @@
 package com.wavemaker.security;
 
-import com.wavemaker.dao_jpa.UserDao;
+import com.wavemaker.dao.jpa.UserDao;
 import com.wavemaker.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

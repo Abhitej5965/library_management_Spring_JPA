@@ -1,6 +1,6 @@
 package com.wavemaker.daoImpl;
 
-import com.wavemaker.dao.BookDao;
+import com.wavemaker.dao.jpa.BookDao;
 import com.wavemaker.model.AuthorDetails;
 import com.wavemaker.model.Book;
 import org.hibernate.Session;
@@ -52,6 +52,7 @@ public class BookDaoImpl implements BookDao {
             logger.error("something went wrong reason:{}. so the changes on the transaction are rolled back", e.getMessage());
         }
     }
+
     @Transactional
     @Override
     public Book save(Book updateBook) {

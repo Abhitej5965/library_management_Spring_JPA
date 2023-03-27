@@ -1,7 +1,7 @@
 package com.wavemaker.service;
 
-import com.wavemaker.dao_jpa.AuthorDao;
-import com.wavemaker.dao_jpa.BookDao;
+import com.wavemaker.dao.jpa.AuthorDao;
+import com.wavemaker.dao.jpa.BookDao;
 import com.wavemaker.model.AuthorDetails;
 import com.wavemaker.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;

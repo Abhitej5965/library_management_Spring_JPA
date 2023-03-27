@@ -1,6 +1,6 @@
 package com.wavemaker.service;
 
-import com.wavemaker.dao_jpa.BookDao;
+import com.wavemaker.dao.jpa.BookDao;
 import com.wavemaker.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +43,5 @@ public class BookService {
     public Book getBookById(int bookId) {
         return bookDao.getById(bookId);
     }
-
 }
+

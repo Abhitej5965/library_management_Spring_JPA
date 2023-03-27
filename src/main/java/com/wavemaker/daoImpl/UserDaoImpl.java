@@ -1,9 +1,8 @@
 package com.wavemaker.daoImpl;
 
-import com.wavemaker.dao.BookDao;
-import com.wavemaker.model.Book;
+import com.wavemaker.dao.jpa.BookDao;
+import com.wavemaker.dao.jpa.UserDao;
 import com.wavemaker.model.User;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -13,17 +12,16 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 
 @Repository
-public class UserDaoImpl implements com.wavemaker.dao.UserDao {
+public class UserDaoImpl implements UserDao {
     @Autowired
     private SessionFactory sessionFactory;
     @Autowired
     private BookDao bookDaoImpl;
     private Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
 
-    @Transactional(value="transactionManager")
+    @Transactional(value = "transactionManager")
     @Override
     public User saveAndFlush(User user) {
         Session session = sessionFactory.getCurrentSession();
@@ -40,6 +38,7 @@ public class UserDaoImpl implements com.wavemaker.dao.UserDao {
             return null;
         }
     }
+
     @Transactional
     @Override
     public User validateUser(String username) {
@@ -59,6 +58,7 @@ public class UserDaoImpl implements com.wavemaker.dao.UserDao {
         logger.info("Database session for validating user is closed");
         return user;
     }
+
     @Transactional
     @Override
     public List<User> findAll() {

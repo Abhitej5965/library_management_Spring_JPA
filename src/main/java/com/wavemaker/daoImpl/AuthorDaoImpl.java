@@ -1,7 +1,7 @@
 package com.wavemaker.daoImpl;
 
-import com.wavemaker.dao.AuthorDao;
-import com.wavemaker.dao.BookDao;
+import com.wavemaker.dao.jpa.AuthorDao;
+import com.wavemaker.dao.jpa.BookDao;
 import com.wavemaker.model.AuthorDetails;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Repository
 public class AuthorDaoImpl implements AuthorDao {
